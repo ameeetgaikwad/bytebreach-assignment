@@ -24,10 +24,10 @@ export default function Login() {
       try {
         const chainConfig = {
           chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: "0x11155111",
-          rpcTarget: "https://sepolia.infura.io/v3/",
-          displayName: "Sepolia test network",
-          blockExplorer: "https://sepolia.etherscan.io",
+          chainId: "0x1",
+          rpcTarget: "https://rpc.ankr.com/eth",
+          displayName: "Ethereum Mainnet",
+          blockExplorer: "https://goerli.etherscan.io",
           ticker: "ETH",
           tickerName: "Ethereum",
         };
