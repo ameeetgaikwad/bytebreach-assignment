@@ -19,7 +19,6 @@
     "@web3auth/wallet-connect-v2-adapter": "^7.0.4",
     "dotenv": "^16.3.1",
     "framer-motion": "^10.16.4",
-    "magic-sdk": "^21.1.1",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18"

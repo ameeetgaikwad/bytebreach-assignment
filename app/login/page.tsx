@@ -14,11 +14,8 @@ import { WalletConnectModal } from "@walletconnect/modal";
 import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../context/context";
 import "../globals.css";
-import { Magic } from "magic-sdk";
 require("dotenv").config();
 export default function Login() {
-  const magic = new Magic("pk_live_C4B2EE37D63682A1");
-
   const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(false);

@@ -80,6 +80,20 @@ export default function Client({
           <div className="ml-2">Submit</div>
         </button>
       </div>
+      <div className="flex-col justify-center">
+        <button
+          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+          onClick={getUserInfo}
+        >
+          user info
+        </button>
+        <button
+          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+          onClick={logout}
+        >
+          log out
+        </button>
+      </div>
     </main>
   );
 }
