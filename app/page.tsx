@@ -16,11 +16,13 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { authenticated } = useContext(GlobalContext);
-  const router = useRouter();
-  console.log(router);
-  if (!authenticated) {
-    router.push("/login");
-  }
+  useEffect(() => {
+    const router = useRouter();
+    if (!authenticated) {
+      router.push("/login");
+    }
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       {authenticated ? "Welcome to ByteBreach..." : ""}
