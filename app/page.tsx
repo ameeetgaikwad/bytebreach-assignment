@@ -10,12 +10,20 @@ import {
   WalletConnectV2Adapter,
 } from "@web3auth/wallet-connect-v2-adapter";
 import { WalletConnectModal } from "@walletconnect/modal";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "./context/context";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const { authenticated } = useContext(GlobalContext);
+  const router = useRouter();
+  console.log(router);
+  if (!authenticated) {
+    router.push("/login");
+  }
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      Welcome to ByteBreach...
+      {authenticated ? "Welcome to ByteBreach..." : ""}
     </main>
   );
 }

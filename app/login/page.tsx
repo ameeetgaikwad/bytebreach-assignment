@@ -11,6 +11,8 @@ import {
   WalletConnectV2Adapter,
 } from "@web3auth/wallet-connect-v2-adapter";
 import { WalletConnectModal } from "@walletconnect/modal";
+import { MetamaskAdapter } from "@web3auth/metamask-adapter";
+import RPC from "../ethersRPC";
 import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../context/context";
 import "../globals.css";
@@ -68,6 +70,28 @@ export default function Login() {
 
         // web3authInstance.configureAdapter(walletConnectV2Adapter);
 
+        const metamaskAdapter = new MetamaskAdapter({
+          clientId: process.env.NEXT_PUBLIC_CLIENTID,
+          sessionTime: 3600, // 1 hour in seconds
+          web3AuthNetwork: "sapphire_devnet",
+
+          chainConfig: {
+            chainNamespace: CHAIN_NAMESPACES.EIP155,
+            chainId: "0x1",
+            rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+          },
+        });
+        web3authInstance.configureAdapter(metamaskAdapter);
+        metamaskAdapter.setAdapterSettings({
+          sessionTime: 86400, // 1 day in seconds
+          chainConfig: {
+            chainNamespace: CHAIN_NAMESPACES.EIP155,
+            chainId: "0x1",
+            rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+          },
+          web3AuthNetwork: "sapphire_devnet",
+        });
+
         await web3authInstance.init();
         setProvider(web3authInstance.provider);
         if (web3authInstance.connectedAdapterName) {
@@ -81,7 +105,7 @@ export default function Login() {
     init();
   }, []);
 
-  const { userEmail } = useContext(GlobalContext);
+  const { clientEmail } = useContext(GlobalContext);
 
   const loginWithGithub = async () => {
     try {
@@ -129,7 +153,7 @@ export default function Login() {
         {
           loginProvider: "email_passwordless",
           extraLoginOptions: {
-            login_hint: userEmail,
+            login_hint: clientEmail,
           },
         }
       );
@@ -138,6 +162,16 @@ export default function Login() {
       console.log("error", e);
     }
   };
+
+  const loginWCModal = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.METAMASK);
+    setProvider(web3authProvider);
+  };
+
   const getUserInfo = async () => {
     if (!web3auth) {
       console.log("web3auth not initialized yet");
@@ -156,10 +190,20 @@ export default function Login() {
     setLoggedIn(false);
   };
 
+  const getAccounts = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const address = await rpc.getAccounts();
+    console.log(address);
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center  p-24">
-      <Image src={"/logo.svg"} width={120} height={120} alt="l" />
-      <div>ByteBreach</div>
+      <Image src={"/assets/logo.svg"} width={120} height={120} alt="l" />
+      <div className="pt-5 pb-5 text-xl font-bold">ByteBreach</div>
 
       <Box color={"#04151F"}>
         <Tabs variant="soft-rounded" isFitted borderBottom={"none"}>
@@ -174,8 +218,10 @@ export default function Login() {
                 loginWithGithub={loginWithGithub}
                 loginWithGoogle={loginWithGoogle}
                 loginWithEmail={loginWithEmail}
+                loginWCModal={loginWCModal}
                 getUserInfo={getUserInfo}
                 logout={logout}
+                getAccounts={getAccounts}
               />
             </TabPanel>
             <TabPanel height={"25rem"} width={"30rem"}>
@@ -183,8 +229,10 @@ export default function Login() {
                 loginWithGithub={loginWithGithub}
                 loginWithGoogle={loginWithGoogle}
                 loginWithEmail={loginWithEmail}
+                loginWCModal={loginWCModal}
                 getUserInfo={getUserInfo}
                 logout={logout}
+                getAccounts={getAccounts}
               />
             </TabPanel>
           </TabPanels>

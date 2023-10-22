@@ -3,34 +3,41 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 
 interface ContextProps {
-  userEmail: string;
-  setUserEmail: Dispatch<SetStateAction<string>>;
-  loading: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>;
+  clientEmail: string;
+  setClientEmail: Dispatch<SetStateAction<string>>;
+  auditorEmail: string;
+  setAuditorEmail: Dispatch<SetStateAction<string>>;
+  authenticated: boolean;
+  setAuthenticated: Dispatch<SetStateAction<boolean>>;
   chain: number;
   setChain: Dispatch<SetStateAction<number>>;
 }
 
 export const GlobalContext = createContext<ContextProps>({
-  userEmail: "",
-  setUserEmail: (): string => "",
-  loading: true,
-  setLoading: (): boolean => true,
+  clientEmail: "",
+  setClientEmail: (): string => "",
+  auditorEmail: "",
+  setAuditorEmail: (): string => "",
+  authenticated: false,
+  setAuthenticated: (): boolean => true,
   chain: 0,
   setChain: (): number => 0,
 });
 
 export const GlobalContextProvider = ({ children }: any) => {
-  const [userEmail, setUserEmail] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [clientEmail, setClientEmail] = useState("");
+  const [auditorEmail, setAuditorEmail] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
   const [chain, setChain] = useState(0);
   return (
     <GlobalContext.Provider
       value={{
-        userEmail,
-        setUserEmail,
-        loading,
-        setLoading,
+        clientEmail,
+        setClientEmail,
+        auditorEmail,
+        setAuditorEmail,
+        authenticated,
+        setAuthenticated,
         chain,
         setChain,
       }}
