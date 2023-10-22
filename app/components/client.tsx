@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useContext } from "react";
-import { GlobalContext } from "../app/context/context";
+import { GlobalContext } from "../context/context";
 export default function Client({
   loginWithGithub,
   loginWithGoogle,
