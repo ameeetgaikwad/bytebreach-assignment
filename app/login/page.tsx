@@ -16,6 +16,9 @@ import RPC from "../ethersRPC";
 import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../context/context";
 import "../globals.css";
+import { createClient } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
+
 require("dotenv").config();
 export default function Login() {
   const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
@@ -105,7 +108,18 @@ export default function Login() {
     init();
   }, []);
 
-  const { clientEmail } = useContext(GlobalContext);
+  const { clientEmail, setAuthenticated } = useContext(GlobalContext);
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+    process.env.NEXT_PUBLIC_SUPABASE_KEY as string
+  );
+  const router = useRouter();
+
+  const userData = async () => {
+    let { data, error } = await supabase.from("email-storage").select("email");
+
+    return data;
+  };
 
   const loginWithGithub = async () => {
     try {
@@ -120,6 +134,23 @@ export default function Login() {
         }
       );
       setProvider(web3authProvider);
+      const { email: userEmail } = await web3auth.getUserInfo();
+      console.log(userEmail);
+      const data = await userData();
+      console.log(data);
+      const alredyAUser = data?.map((x) => x.email).includes(userEmail);
+      console.log(alredyAUser);
+      if (alredyAUser) {
+        setAuthenticated(true);
+        router.push("/");
+      } else {
+        const { data, error } = await supabase
+          .from("email-storage")
+          .insert([{ email: userEmail }])
+          .select();
+        console.log(data);
+        router.push("/register");
+      }
     } catch (e) {
       console.log("error", e);
     }
@@ -137,6 +168,23 @@ export default function Login() {
         }
       );
       setProvider(web3authProvider);
+      const { email: userEmail } = await web3auth.getUserInfo();
+      console.log(userEmail);
+      const data = await userData();
+      console.log(data);
+      const alredyAUser = data?.map((x) => x.email).includes(userEmail);
+      console.log(alredyAUser);
+      if (alredyAUser) {
+        setAuthenticated(true);
+        router.push("/");
+      } else {
+        const { data, error } = await supabase
+          .from("email-storage")
+          .insert([{ email: userEmail }])
+          .select();
+        console.log(data);
+        router.push("/register");
+      }
     } catch (e) {
       console.log("error", e);
     }
@@ -158,18 +206,41 @@ export default function Login() {
         }
       );
       setProvider(web3authProvider);
+      const { email: userEmail } = await web3auth.getUserInfo();
+      console.log(userEmail);
+      const data = await userData();
+      console.log(data);
+      const alredyAUser = data?.map((x) => x.email).includes(userEmail);
+      console.log(alredyAUser);
+      if (alredyAUser) {
+        setAuthenticated(true);
+        router.push("/");
+      } else {
+        const { data, error } = await supabase
+          .from("email-storage")
+          .insert([{ email: userEmail }])
+          .select();
+        console.log(data);
+        router.push("/register");
+      }
     } catch (e) {
       console.log("error", e);
     }
   };
 
   const loginWCModal = async () => {
-    if (!web3auth) {
-      console.log("web3auth not initialized yet");
-      return;
+    try {
+      if (!web3auth) {
+        console.log("web3auth not initialized yet");
+        return;
+      }
+      const web3authProvider = await web3auth.connectTo(
+        WALLET_ADAPTERS.METAMASK
+      );
+      setProvider(web3authProvider);
+    } catch (e) {
+      console.log("error", e);
     }
-    const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.METAMASK);
-    setProvider(web3authProvider);
   };
 
   const getUserInfo = async () => {
