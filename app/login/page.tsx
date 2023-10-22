@@ -24,6 +24,7 @@ export default function Login() {
   const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(false);
+  const [userAddress, setAddress] = useState("");
   useEffect(() => {
     const init = async () => {
       try {
@@ -104,7 +105,7 @@ export default function Login() {
         console.error(error);
       }
     };
-
+    getAccounts();
     init();
   }, []);
 
@@ -122,7 +123,7 @@ export default function Login() {
   };
   const userDataAddress = async () => {
     let { data, error } = await supabase
-      .from("email-storage")
+      .from("address-storage")
       .select("address");
 
     return data;
@@ -245,21 +246,23 @@ export default function Login() {
         WALLET_ADAPTERS.METAMASK
       );
       setProvider(web3authProvider);
-      const address = await getAccounts();
-      console.log(address);
+      // @ts-ignore
+      await getAccounts();
+      console.log(userAddress);
       const data = await userDataAddress();
       console.log(data);
-      const alredyAUser = data?.map((x) => x.address).includes(address);
+      const alredyAUser = data?.map((x) => x.address).includes(userAddress);
       console.log(alredyAUser);
       if (alredyAUser) {
         setAuthenticated(true);
         router.push("/");
       } else {
         const { data, error } = await supabase
-          .from("email-storage")
-          .insert([{ address: address }])
+          .from("address-storage")
+          .insert([{ address: userAddress }])
           .select();
         console.log(data);
+        console.log(error);
         router.push("/register");
       }
     } catch (e) {
@@ -293,7 +296,7 @@ export default function Login() {
     const rpc = new RPC(provider);
     const address = await rpc.getAccounts();
     console.log(address);
-
+    setAddress(address);
     return address;
   };
 
