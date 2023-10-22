@@ -7,7 +7,7 @@ export default function Client({
   loginWithEmail,
   getUserInfo,
   logout,
-  loginWCModal,
+  lognMetamask,
   getAccounts,
 }: {
   loginWithGithub: any;
@@ -15,7 +15,7 @@ export default function Client({
   loginWithEmail: any;
   getUserInfo: any;
   logout: any;
-  loginWCModal: any;
+  lognMetamask: any;
   getAccounts: any;
 }) {
   const { setClientEmail } = useContext(GlobalContext);
@@ -48,7 +48,7 @@ export default function Client({
         <div className="ml-2">Login using your GitHub Account</div>
       </button>
       <button
-        onClick={loginWCModal}
+        onClick={lognMetamask}
         className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
       >
         <Image

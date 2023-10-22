@@ -45,34 +45,14 @@ export default function Login() {
 
         setWeb3auth(web3authInstance);
 
-        // keep
         const privateKeyProvider = new EthereumPrivateKeyProvider({
           config: { chainConfig },
         });
-        // keep
+
         const openloginAdapter = new OpenloginAdapter({
           privateKeyProvider,
         });
         web3authInstance.configureAdapter(openloginAdapter);
-
-        // adding wallet connect v2 adapter
-        // const defaultWcSettings = await getWalletConnectV2Settings(
-        //   "eip155",
-        //   [1, 137, 5],
-        //   "04309ed1007e77d1f119b85205bb779d"
-        // );
-        // const walletConnectModal = new WalletConnectModal({
-        //   projectId: "2455679236dbec241fec394feb4fe62d",
-        // });
-        // const walletConnectV2Adapter = new WalletConnectV2Adapter({
-        //   adapterSettings: {
-        //     qrcodeModal: walletConnectModal,
-        //     ...defaultWcSettings.adapterSettings,
-        //   },
-        //   loginSettings: { ...defaultWcSettings.loginSettings },
-        // });
-
-        // web3authInstance.configureAdapter(walletConnectV2Adapter);
 
         const metamaskAdapter = new MetamaskAdapter({
           clientId: process.env.NEXT_PUBLIC_CLIENTID,
@@ -236,7 +216,7 @@ export default function Login() {
     }
   };
 
-  const loginWCModal = async () => {
+  const lognMetamask = async () => {
     try {
       if (provider) {
         if (!web3auth) {
@@ -283,13 +263,17 @@ export default function Login() {
     console.log(user);
   };
   const logout = async () => {
-    if (!web3auth) {
-      console.log("web3auth not initialized yet");
-      return;
+    try {
+      if (!web3auth) {
+        console.log("web3auth not initialized yet");
+        return;
+      }
+      await web3auth.logout();
+      setProvider(null);
+      setLoggedIn(false);
+    } catch (e) {
+      console.log("error", e);
     }
-    await web3auth.logout();
-    setProvider(null);
-    setLoggedIn(false);
   };
 
   const getAccounts = async () => {
@@ -334,7 +318,7 @@ export default function Login() {
                 loginWithGithub={loginWithGithub}
                 loginWithGoogle={loginWithGoogle}
                 loginWithEmail={loginWithEmail}
-                loginWCModal={loginWCModal}
+                lognMetamask={lognMetamask}
                 getUserInfo={getUserInfo}
                 logout={logout}
                 getAccounts={getAccounts}
@@ -345,7 +329,7 @@ export default function Login() {
                 loginWithGithub={loginWithGithub}
                 loginWithGoogle={loginWithGoogle}
                 loginWithEmail={loginWithEmail}
-                loginWCModal={loginWCModal}
+                lognMetamask={lognMetamask}
                 getUserInfo={getUserInfo}
                 logout={logout}
                 getAccounts={getAccounts}
