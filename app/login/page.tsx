@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from "@chakra-ui/react";
-import Client from "../components/client";
+import Client from "../../components/client";
 import { Web3AuthNoModal } from "@web3auth/no-modal";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
