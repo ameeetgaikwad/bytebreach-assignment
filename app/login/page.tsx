@@ -120,6 +120,13 @@ export default function Login() {
 
     return data;
   };
+  const userDataAddress = async () => {
+    let { data, error } = await supabase
+      .from("email-storage")
+      .select("address");
+
+    return data;
+  };
 
   const loginWithGithub = async () => {
     try {
@@ -238,6 +245,23 @@ export default function Login() {
         WALLET_ADAPTERS.METAMASK
       );
       setProvider(web3authProvider);
+      const address = await getAccounts();
+      console.log(address);
+      const data = await userDataAddress();
+      console.log(data);
+      const alredyAUser = data?.map((x) => x.address).includes(address);
+      console.log(alredyAUser);
+      if (alredyAUser) {
+        setAuthenticated(true);
+        router.push("/");
+      } else {
+        const { data, error } = await supabase
+          .from("email-storage")
+          .insert([{ address: address }])
+          .select();
+        console.log(data);
+        router.push("/register");
+      }
     } catch (e) {
       console.log("error", e);
     }
@@ -269,6 +293,8 @@ export default function Login() {
     const rpc = new RPC(provider);
     const address = await rpc.getAccounts();
     console.log(address);
+
+    return address;
   };
 
   return (
@@ -277,7 +303,12 @@ export default function Login() {
       <div className="pt-5 pb-5 text-xl font-bold">ByteBreach</div>
 
       <Box color={"#04151F"}>
-        <Tabs variant="soft-rounded" isFitted borderBottom={"none"}>
+        <Tabs
+          variant="soft-rounded"
+          isFitted
+          borderBottom={"none"}
+          colorScheme="green"
+        >
           <TabList display={"flex"} justifyContent={"center"}>
             <Tab>Client</Tab>
             <Tab>Auditor</Tab>

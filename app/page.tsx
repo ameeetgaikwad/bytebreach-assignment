@@ -16,8 +16,8 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { authenticated } = useContext(GlobalContext);
+  const router = useRouter();
   useEffect(() => {
-    const router = useRouter();
     if (!authenticated) {
       router.push("/login");
     }
