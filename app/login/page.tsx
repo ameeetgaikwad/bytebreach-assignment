@@ -33,7 +33,7 @@ export default function Login() {
         };
         const web3authInstance = new Web3AuthNoModal({
           clientId: process.env.NEXT_PUBLIC_CLIENTID as string, // Get your Client ID from the Web3Auth Dashboard
-          web3AuthNetwork: "sapphire_mainnet", // Web3Auth Network
+          web3AuthNetwork: "sapphire_devnet", // Web3Auth Network
           chainConfig,
         });
 
