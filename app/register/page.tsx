@@ -22,7 +22,7 @@ export default function Register() {
         className="pb-5"
       />
       <div className="text-xl font-bold">Enter your details to login</div>
-      <div className="w-2/6">
+      <div className=" w-full sm:w-2/6">
         <label>Full Name*</label>
         <input
           type="text"
@@ -32,7 +32,7 @@ export default function Register() {
           value={name}
         />
       </div>
-      <div className="w-2/6">
+      <div className="w-full sm:w-2/6">
         <label>Company Name*</label>
         <input
           type="text"
@@ -44,7 +44,7 @@ export default function Register() {
           value={company}
         />
       </div>
-      <div className="w-2/6">
+      <div className="w-full sm:w-2/6">
         <label>Website</label>
         <input
           type="text"
@@ -55,7 +55,7 @@ export default function Register() {
           value={website}
         />
       </div>
-      <div className="w-2/6">
+      <div className="w-full sm:w-2/6">
         <label>Twitter</label>
         <input
           type="text"
@@ -66,7 +66,7 @@ export default function Register() {
           value={twitter}
         />
       </div>
-      <div className="w-2/6">
+      <div className="w-full sm:w-2/6">
         <label>Github</label>
         <input
           type="text"
@@ -79,7 +79,7 @@ export default function Register() {
       </div>
 
       <button
-        className="card flex-row justify-center bg-white w-1/5 p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-1 m-auto"
+        className="card flex-row justify-center bg-white  w-full sm:w-1/5 p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-1 m-auto"
         onClick={() => {
           setAuthenticated(true);
           router.push("/");
