@@ -6,6 +6,8 @@ import { Web3AuthNoModal } from "@web3auth/no-modal";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { CHAIN_NAMESPACES, IProvider, WALLET_ADAPTERS } from "@web3auth/base";
+import { ethers } from "ethers";
+
 import {
   getWalletConnectV2Settings,
   WalletConnectV2Adapter,
@@ -24,7 +26,6 @@ export default function Login() {
   const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(false);
-  const [userAddress, setAddress] = useState("");
   useEffect(() => {
     const init = async () => {
       try {
@@ -62,7 +63,7 @@ export default function Login() {
         //   "04309ed1007e77d1f119b85205bb779d"
         // );
         // const walletConnectModal = new WalletConnectModal({
-        //   projectId: "04309ed1007e77d1f119b85205bb779d",
+        //   projectId: "2455679236dbec241fec394feb4fe62d",
         // });
         // const walletConnectV2Adapter = new WalletConnectV2Adapter({
         //   adapterSettings: {
@@ -238,32 +239,36 @@ export default function Login() {
 
   const loginWCModal = async () => {
     try {
-      if (!web3auth) {
-        console.log("web3auth not initialized yet");
-        return;
-      }
-      const web3authProvider = await web3auth.connectTo(
-        WALLET_ADAPTERS.METAMASK
-      );
-      setProvider(web3authProvider);
-      // @ts-ignore
-      await getAccounts();
-      console.log(userAddress);
-      const data = await userDataAddress();
-      console.log(data);
-      const alredyAUser = data?.map((x) => x.address).includes(userAddress);
-      console.log(alredyAUser);
-      if (alredyAUser) {
-        setAuthenticated(true);
-        router.push("/");
-      } else {
-        const { data, error } = await supabase
-          .from("address-storage")
-          .insert([{ address: userAddress }])
-          .select();
+      if (provider) {
+        if (!web3auth) {
+          console.log("web3auth not initialized yet");
+          return;
+        }
+        const web3authProvider = await web3auth.connectTo(
+          WALLET_ADAPTERS.METAMASK
+        );
+        setProvider(web3authProvider);
+        // @ts-ignore
+        const address = await getAccounts();
+        console.log(address);
+        const data = await userDataAddress();
         console.log(data);
-        console.log(error);
-        router.push("/register");
+        const alredyAUser = data?.map((x) => x.address).includes(address);
+        console.log(alredyAUser);
+        if (alredyAUser) {
+          setAuthenticated(true);
+          router.push("/");
+        } else {
+          const { data, error } = await supabase
+            .from("address-storage")
+            .insert([{ address: address }])
+            .select();
+          console.log(data);
+          console.log(error);
+          router.push("/register");
+        }
+      } else {
+        return;
       }
     } catch (e) {
       console.log("error", e);
@@ -296,7 +301,7 @@ export default function Login() {
     const rpc = new RPC(provider);
     const address = await rpc.getAccounts();
     console.log(address);
-    setAddress(address);
+
     return address;
   };
 
