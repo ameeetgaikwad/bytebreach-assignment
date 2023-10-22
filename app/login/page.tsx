@@ -305,9 +305,16 @@ export default function Login() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center  p-24">
-      <Image src={"/assets/logo.svg"} width={120} height={120} alt="l" />
-      <div className="pt-5 pb-5 text-xl font-bold">ByteBreach</div>
+    <main className="flex min-h-screen flex-col items-center p-12 md:p-24 md:w-full">
+      <div className="pt-5 pb-5  text-xl font-bold md:text-2xl">ByteBreach</div>
+
+      <Image
+        src={"/assets/logo.svg"}
+        width={120}
+        height={120}
+        alt="l"
+        className="mb-4"
+      />
 
       <Box color={"#04151F"}>
         <Tabs

@@ -20,10 +20,10 @@ export default function Client({
 }) {
   const { setClientEmail } = useContext(GlobalContext);
   return (
-    <main className="">
+    <main className="flex-col justify-center items-center ml-14 sm:ml-0">
       <button
         onClick={loginWithGoogle}
-        className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
       >
         <Image
           className="ml-2"
@@ -36,7 +36,7 @@ export default function Client({
       </button>
       <button
         onClick={loginWithGithub}
-        className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
       >
         <Image
           className="ml-2"
@@ -49,7 +49,7 @@ export default function Client({
       </button>
       <button
         onClick={loginWCModal}
-        className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
       >
         <Image
           className="ml-2"
@@ -67,7 +67,7 @@ export default function Client({
       <input
         type="email"
         placeholder="Enter your Email"
-        className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-3"
+        className="card flex-row  bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-3"
         onChange={(e) => {
           console.log(e.target.value);
           setClientEmail(e.target.value);
@@ -84,7 +84,7 @@ export default function Client({
           <div className="ml-2">Submit</div>
         </button>
       </div>
-      <div className="flex-col justify-center">
+      {/* <div className="flex-col justify-center">
         <button
           className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
           onClick={getUserInfo}
@@ -103,7 +103,7 @@ export default function Client({
         >
           getAccounts
         </button>
-      </div>
+      </div> */}
     </main>
   );
 }
