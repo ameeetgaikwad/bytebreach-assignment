@@ -1,6 +1,14 @@
 "use client";
 import Image from "next/image";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from "@chakra-ui/react";
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Box,
+  Spinner,
+} from "@chakra-ui/react";
 import Client from "../components/client";
 import { Web3AuthNoModal } from "@web3auth/no-modal";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
@@ -85,11 +93,11 @@ export default function Login() {
         console.error(error);
       }
     };
-    getAccounts();
     init();
   }, []);
 
-  const { clientEmail, setAuthenticated } = useContext(GlobalContext);
+  const { clientEmail, setAuthenticated, loading, setLoading } =
+    useContext(GlobalContext);
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL as string,
     process.env.NEXT_PUBLIC_SUPABASE_KEY as string
@@ -111,6 +119,7 @@ export default function Login() {
 
   const loginWithGithub = async () => {
     try {
+      setLoading(true);
       if (!web3auth) {
         console.log("web3auth not initialized yet");
         return;
@@ -131,6 +140,7 @@ export default function Login() {
       if (alredyAUser) {
         setAuthenticated(true);
         router.push("/");
+        setLoading(false);
       } else {
         const { data, error } = await supabase
           .from("email-storage")
@@ -138,13 +148,16 @@ export default function Login() {
           .select();
         console.log(data);
         router.push("/register");
+        setLoading(false);
       }
     } catch (e) {
+      setLoading(false);
       console.log("error", e);
     }
   };
   const loginWithGoogle = async () => {
     try {
+      setLoading(true);
       if (!web3auth) {
         console.log("web3auth not initialized yet");
         return;
@@ -165,6 +178,7 @@ export default function Login() {
       if (alredyAUser) {
         setAuthenticated(true);
         router.push("/");
+        setLoading(false);
       } else {
         const { data, error } = await supabase
           .from("email-storage")
@@ -172,13 +186,16 @@ export default function Login() {
           .select();
         console.log(data);
         router.push("/register");
+        setLoading(false);
       }
     } catch (e) {
+      setLoading(false);
       console.log("error", e);
     }
   };
   const loginWithEmail = async () => {
     try {
+      setLoading(true);
       if (!web3auth) {
         console.log("web3auth not initialized yet");
         return;
@@ -202,6 +219,7 @@ export default function Login() {
       console.log(alredyAUser);
       if (alredyAUser) {
         setAuthenticated(true);
+        setLoading(false);
         router.push("/");
       } else {
         const { data, error } = await supabase
@@ -209,8 +227,10 @@ export default function Login() {
           .insert([{ email: userEmail }])
           .select();
         console.log(data);
+        setLoading(false);
         router.push("/register");
       }
+      setLoading(false);
     } catch (e) {
       console.log("error", e);
     }
@@ -218,6 +238,7 @@ export default function Login() {
 
   const lognMetamask = async () => {
     try {
+      setLoading(true);
       if (provider) {
         if (!web3auth) {
           console.log("web3auth not initialized yet");
@@ -237,6 +258,7 @@ export default function Login() {
         if (alredyAUser) {
           setAuthenticated(true);
           router.push("/");
+          setLoading(false);
         } else {
           const { data, error } = await supabase
             .from("address-storage")
@@ -245,11 +267,14 @@ export default function Login() {
           console.log(data);
           console.log(error);
           router.push("/register");
+          setLoading(false);
         }
       } else {
+        setLoading(false);
         return;
       }
     } catch (e) {
+      setLoading(false);
       console.log("error", e);
     }
   };
@@ -260,10 +285,12 @@ export default function Login() {
       return;
     }
     const user = await web3auth.getUserInfo();
+
     console.log(user);
   };
   const logout = async () => {
     try {
+      setLoading(true);
       if (!web3auth) {
         console.log("web3auth not initialized yet");
         return;
@@ -271,7 +298,9 @@ export default function Login() {
       await web3auth.logout();
       setProvider(null);
       setLoggedIn(false);
+      setLoading(false);
     } catch (e) {
+      setLoading(false);
       console.log("error", e);
     }
   };
@@ -289,9 +318,10 @@ export default function Login() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-12 md:p-24 md:w-full">
-      <div className="pt-5 pb-5  text-xl font-bold md:text-2xl">ByteBreach</div>
+    <main className="flex min-h-screen flex-col items-center p-12 md:p-20 md:w-full">
+      <div className="absolute top-2 left-4">{loading ? <Spinner /> : ""}</div>
 
+      <div className="pt-5 pb-5  text-xl font-bold md:text-2xl">ByteBreach</div>
       <Image
         src={"/assets/logo.svg"}
         width={120}
@@ -299,7 +329,12 @@ export default function Login() {
         alt="l"
         className="mb-4"
       />
-
+      <button
+        onClick={logout}
+        className="absolute top-2 right-4 card flex-row bg-white w-1 sm:w-16 p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+      >
+        log out
+      </button>
       <Box color={"#04151F"}>
         <Tabs
           variant="soft-rounded"

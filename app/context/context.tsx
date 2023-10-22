@@ -9,8 +9,8 @@ interface ContextProps {
   setAuditorEmail: Dispatch<SetStateAction<string>>;
   authenticated: boolean;
   setAuthenticated: Dispatch<SetStateAction<boolean>>;
-  chain: number;
-  setChain: Dispatch<SetStateAction<number>>;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 export const GlobalContext = createContext<ContextProps>({
@@ -20,15 +20,15 @@ export const GlobalContext = createContext<ContextProps>({
   setAuditorEmail: (): string => "",
   authenticated: false,
   setAuthenticated: (): boolean => true,
-  chain: 0,
-  setChain: (): number => 0,
+  loading: false,
+  setLoading: (): boolean => false,
 });
 
 export const GlobalContextProvider = ({ children }: any) => {
   const [clientEmail, setClientEmail] = useState("");
   const [auditorEmail, setAuditorEmail] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
-  const [chain, setChain] = useState(0);
+  const [loading, setLoading] = useState(false);
   return (
     <GlobalContext.Provider
       value={{
@@ -38,8 +38,8 @@ export const GlobalContextProvider = ({ children }: any) => {
         setAuditorEmail,
         authenticated,
         setAuthenticated,
-        chain,
-        setChain,
+        loading,
+        setLoading,
       }}
     >
       {children}

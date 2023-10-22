@@ -5,7 +5,7 @@ import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "./context/context";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
-
+import { Spinner } from "@chakra-ui/react";
 export default function Home() {
   const { authenticated } = useContext(GlobalContext);
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {authenticated ? "Welcome to ByteBreach..." : ""}
+      {authenticated ? "Welcome to ByteBreach..." : <Spinner />}
     </main>
   );
 }
