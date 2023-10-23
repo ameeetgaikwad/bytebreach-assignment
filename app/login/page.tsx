@@ -88,6 +88,7 @@ export default function Login() {
         setProvider(web3authInstance.provider);
         if (web3authInstance.connectedAdapterName) {
           setLoggedIn(true);
+          web3authInstance.logout();
         }
       } catch (error) {
         console.error(error);
