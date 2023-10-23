@@ -46,7 +46,7 @@ export default function Login() {
           tickerName: "Ethereum",
         };
         const web3authInstance = new Web3AuthNoModal({
-          clientId: process.env.NEXT_PUBLIC_CLIENTID as string, // Get your Client ID from the Web3Auth Dashboard
+          clientId: process.env.NEXT_PUBLIC_CLIENTID as string,
           web3AuthNetwork: "sapphire_devnet", // Web3Auth Network
           chainConfig,
         });
@@ -70,7 +70,7 @@ export default function Login() {
           chainConfig: {
             chainNamespace: CHAIN_NAMESPACES.EIP155,
             chainId: "0x1",
-            rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+            rpcTarget: "https://rpc.ankr.com/eth",
           },
         });
         web3authInstance.configureAdapter(metamaskAdapter);
@@ -79,7 +79,7 @@ export default function Login() {
           chainConfig: {
             chainNamespace: CHAIN_NAMESPACES.EIP155,
             chainId: "0x1",
-            rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+            rpcTarget: "https://rpc.ankr.com/eth",
           },
           web3AuthNetwork: "sapphire_devnet",
         });
