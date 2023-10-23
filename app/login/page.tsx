@@ -330,12 +330,6 @@ export default function Login() {
         alt="l"
         className="mb-4"
       />
-      <button
-        onClick={logout}
-        className="absolute top-2 right-4 card flex-row bg-white w-1 sm:w-16 p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
-      >
-        log out
-      </button>
       <Box color={"#04151F"}>
         <Tabs
           variant="soft-rounded"
