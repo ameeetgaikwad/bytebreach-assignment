@@ -13,7 +13,7 @@ export default function Register() {
   const { setAuthenticated } = useContext(GlobalContext);
   const router = useRouter();
   return (
-    <main className="flex min-h-screen flex-col items-center p-20 pt-12">
+    <main className="flex min-h-screen flex-col items-center p-20 pt-12 bg-[url('/assets/bg.svg')] bg-bottom bg-no-repeat bg-cover">
       <Image
         src={"/assets/logo.svg"}
         width={120}
@@ -34,7 +34,7 @@ export default function Register() {
           <label>Full Name*</label>
           <input
             type="text"
-            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2 focus:border-0"
             required
             onChange={(e) => setName(e.target.value)}
             value={name}
@@ -44,7 +44,7 @@ export default function Register() {
           <label>Company Name*</label>
           <input
             type="text"
-            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2 focus:border-0"
             required
             onChange={(e) => {
               setCompany(e.target.value);
@@ -56,7 +56,7 @@ export default function Register() {
           <label>Website</label>
           <input
             type="text"
-            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2 focus:border-0"
             onChange={(e) => {
               setWebsite(e.target.value);
             }}
@@ -67,7 +67,7 @@ export default function Register() {
           <label>Twitter</label>
           <input
             type="text"
-            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2 focus:border-0"
             onChange={(e) => {
               setTwitter(e.target.value);
             }}
@@ -78,7 +78,7 @@ export default function Register() {
           <label>Github</label>
           <input
             type="text"
-            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2 focus:border-0"
             onChange={(e) => {
               setGithub(e.target.value);
             }}
