@@ -22,71 +22,80 @@ export default function Register() {
         className="pb-5"
       />
       <div className="text-xl font-bold">Enter your details to login</div>
-      <div className=" w-full sm:w-2/6">
-        <label>Full Name*</label>
-        <input
-          type="text"
-          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
-          required
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
-      </div>
-      <div className="w-full sm:w-2/6">
-        <label>Company Name*</label>
-        <input
-          type="text"
-          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
-          required
-          onChange={(e) => {
-            setCompany(e.target.value);
-          }}
-          value={company}
-        />
-      </div>
-      <div className="w-full sm:w-2/6">
-        <label>Website</label>
-        <input
-          type="text"
-          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
-          onChange={(e) => {
-            setWebsite(e.target.value);
-          }}
-          value={website}
-        />
-      </div>
-      <div className="w-full sm:w-2/6">
-        <label>Twitter</label>
-        <input
-          type="text"
-          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
-          onChange={(e) => {
-            setTwitter(e.target.value);
-          }}
-          value={twitter}
-        />
-      </div>
-      <div className="w-full sm:w-2/6">
-        <label>Github</label>
-        <input
-          type="text"
-          className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
-          onChange={(e) => {
-            setGithub(e.target.value);
-          }}
-          value={github}
-        />
-      </div>
-
-      <button
-        className="card flex-row justify-center bg-white  w-full sm:w-1/5 p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-1 m-auto"
-        onClick={() => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
           setAuthenticated(true);
           router.push("/");
         }}
+        className="w-full"
       >
-        <div className="ml-2 p-3">Submit</div>
-      </button>
+        <div className=" w-full sm:w-2/6 m-auto">
+          <label>Full Name*</label>
+          <input
+            type="text"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            required
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+        </div>
+        <div className="w-full sm:w-2/6 m-auto">
+          <label>Company Name*</label>
+          <input
+            type="text"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            required
+            onChange={(e) => {
+              setCompany(e.target.value);
+            }}
+            value={company}
+          />
+        </div>
+        <div className="w-full sm:w-2/6 m-auto">
+          <label>Website</label>
+          <input
+            type="text"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            onChange={(e) => {
+              setWebsite(e.target.value);
+            }}
+            value={website}
+          />
+        </div>
+        <div className="w-full sm:w-2/6 m-auto">
+          <label>Twitter</label>
+          <input
+            type="text"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            onChange={(e) => {
+              setTwitter(e.target.value);
+            }}
+            value={twitter}
+          />
+        </div>
+        <div className="w-full sm:w-2/6 m-auto">
+          <label>Github</label>
+          <input
+            type="text"
+            className="card flex-row bg-white w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-2"
+            onChange={(e) => {
+              setGithub(e.target.value);
+            }}
+            value={github}
+          />
+        </div>
+
+        <input
+          type="submit"
+          className="card flex-row justify-center bg-white  w-full sm:w-1/5 p-2 rounded-full border-black border-2 mb-4 flex-row items-center m-auto"
+          onClick={() => {
+            onsubmit;
+          }}
+          placeholder="Submit"
+        />
+        {/* <div className="ml-2 p-3">Submit</div> */}
+      </form>
     </main>
   );
 }
