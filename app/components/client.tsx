@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState, useContext } from "react";
 import { GlobalContext } from "../context/context";
+import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 export default function Client({
   loginWithGithub,
   loginWithGoogle,
@@ -63,16 +64,22 @@ export default function Client({
       <div className="mb-4">
         <hr className="bg-black " />
       </div>
+      <InputGroup>
+        <InputRightElement marginRight={4}>
+          <img src="/assets/email.svg" alt="" />
+        </InputRightElement>
+        <Input
+          _focus={{ border: "none" }}
+          type="email"
+          placeholder="Enter your Email"
+          className="card flex-row border-none bg-white w-4/5 sm:w-full rounded-full  mb-4 flex-row items-center p-3 text focus:border-red"
+          onChange={(e) => {
+            console.log(e.target.value);
+            setClientEmail(e.target.value);
+          }}
+        />
+      </InputGroup>
 
-      <input
-        type="email"
-        placeholder="Enter your Email"
-        className="card flex-row border-none bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-3"
-        onChange={(e) => {
-          console.log(e.target.value);
-          setClientEmail(e.target.value);
-        }}
-      />
       <div className="flex-row justify-center ">
         <button
           onClick={(e) => {
@@ -81,7 +88,7 @@ export default function Client({
           }}
           className=" bg-brandBlue card flex-row justify-center w-2/5 rounded-full border-black border-2 mb-4 flex-row items-center p-3 m-auto border-none"
         >
-          <div className="ml-2 ">Submit</div>
+          <div className="ml-2 text-white">Submit</div>
         </button>
       </div>
       {/* <div className="flex-col justify-center">

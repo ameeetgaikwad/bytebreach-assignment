@@ -317,9 +317,9 @@ export default function Login() {
 
     return address;
   };
-
+  const [tabIndex, setTabIndex] = useState(0);
   return (
-    <main className="flex min-h-screen flex-col items-center p-12 md:p-20 md:w-full bg-[url('/assets/bg.svg')] bg-bottom bg-no-repeat bg-cover">
+    <main className="flex min-h-screen flex-col items-center p-12 md:p-18 md:w-full bg-[url('/assets/bg.svg')] bg-bottom bg-no-repeat bg-cover">
       <div className="absolute top-2 left-4">{loading ? <Spinner /> : ""}</div>
 
       <Image
@@ -338,10 +338,23 @@ export default function Login() {
           isFitted
           borderBottom={"none"}
           colorScheme={"brand"}
+          onChange={(index) => setTabIndex(index)}
         >
           <TabList display={"flex"} justifyContent={"center"}>
-            <Tab>Client</Tab>
-            <Tab>Auditor</Tab>
+            <Tab
+              paddingTop={6}
+              textDecoration={tabIndex === 0 ? "underline" : "none"}
+              textDecorationColor={"#4A3AFF"}
+            >
+              Client
+            </Tab>
+            <Tab
+              paddingTop={6}
+              textDecoration={tabIndex === 1 ? "underline" : "none"}
+              textDecorationColor={"#4A3AFF"}
+            >
+              Auditor
+            </Tab>
           </TabList>
 
           <TabPanels>
