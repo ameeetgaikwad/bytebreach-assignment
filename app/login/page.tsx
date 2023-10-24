@@ -319,10 +319,9 @@ export default function Login() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-12 md:p-20 md:w-full">
+    <main className="flex min-h-screen flex-col items-center p-12 md:p-20 md:w-full bg-[url('/assets/bg.svg')] bg-bottom bg-no-repeat bg-cover">
       <div className="absolute top-2 left-4">{loading ? <Spinner /> : ""}</div>
 
-      <div className="pt-5 pb-5  text-xl font-bold md:text-2xl">ByteBreach</div>
       <Image
         src={"/assets/logo.svg"}
         width={120}
@@ -330,12 +329,15 @@ export default function Login() {
         alt="l"
         className="mb-4"
       />
-      <Box color={"#04151F"}>
+      <div className="pt-5 pb-5 text-white text-xl font-bold md:text-2xl">
+        ByteBreach
+      </div>
+      <Box color={"#04151F"} bg={"#F1F1F1"} borderRadius={22}>
         <Tabs
           variant="soft-rounded"
           isFitted
           borderBottom={"none"}
-          colorScheme="green"
+          colorScheme={"brand"}
         >
           <TabList display={"flex"} justifyContent={"center"}>
             <Tab>Client</Tab>

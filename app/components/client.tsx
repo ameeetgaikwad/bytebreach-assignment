@@ -23,7 +23,7 @@ export default function Client({
     <main className="flex-col justify-center items-center ml-14 sm:ml-0">
       <button
         onClick={loginWithGoogle}
-        className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="boreder-none bg-white card flex-row w-4/5 sm:w-full p-2 rounded-full mb-4 flex-row items-center"
       >
         <Image
           className="ml-2"
@@ -36,7 +36,7 @@ export default function Client({
       </button>
       <button
         onClick={loginWithGithub}
-        className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="border-none bg-white card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
       >
         <Image
           className="ml-2"
@@ -49,7 +49,7 @@ export default function Client({
       </button>
       <button
         onClick={lognMetamask}
-        className="card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="border-none card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full  border-2 mb-4 flex-row items-center"
       >
         <Image
           className="ml-2"
@@ -67,21 +67,21 @@ export default function Client({
       <input
         type="email"
         placeholder="Enter your Email"
-        className="card flex-row  bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-3"
+        className="card flex-row border-none bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-3"
         onChange={(e) => {
           console.log(e.target.value);
           setClientEmail(e.target.value);
         }}
       />
-      <div className="flex-row justify-center">
+      <div className="flex-row justify-center ">
         <button
           onClick={(e) => {
             e.preventDefault();
             loginWithEmail();
           }}
-          className="card flex-row justify-center bg-white w-3/5 p-2 rounded-full border-black border-2 mb-4 flex-row items-center p-3 m-auto"
+          className=" bg-brandBlue card flex-row justify-center w-2/5 rounded-full border-black border-2 mb-4 flex-row items-center p-3 m-auto border-none"
         >
-          <div className="ml-2">Submit</div>
+          <div className="ml-2 ">Submit</div>
         </button>
       </div>
       {/* <div className="flex-col justify-center">
