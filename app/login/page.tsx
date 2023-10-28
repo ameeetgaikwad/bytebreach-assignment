@@ -33,7 +33,13 @@ export default function Login() {
   const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(false);
+
+  let windowHeight;
+  let windowWidth;
   useEffect(() => {
+    windowHeight = window?.innerHeight;
+    windowWidth = window?.innerWidth;
+    console.log(windowHeight);
     const init = async () => {
       try {
         const chainConfig = {
@@ -319,20 +325,33 @@ export default function Login() {
   };
   const [tabIndex, setTabIndex] = useState(0);
   return (
-    <main className="flex min-h-screen flex-col items-center p-12 md:p-18 md:w-full bg-[url('/assets/bg.svg')] bg-bottom bg-no-repeat bg-cover">
+    <main className="flex min-h-screen flex-col items-center p-12 md:p-18 md:w-full bg-white bg-bottom bg-no-repeat bg-cover">
       <div className="absolute top-2 left-4">{loading ? <Spinner /> : ""}</div>
 
-      <Image
-        src={"/assets/logo.svg"}
-        width={120}
-        height={120}
-        alt="l"
-        className="mb-4"
-      />
-      <div className="pt-5 pb-5 text-white text-xl font-bold md:text-2xl">
-        ByteBreach
+      <div
+        className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat fixed  right-[0] top-[0px] rounded-bl-[180px]`}
+      >
+        <Image
+          src={"/assets/logo.svg"}
+          width={120}
+          height={120}
+          alt="l"
+          className="mb-4"
+        />
+        <div className="pt-5 pb-5 text-white text-xl font-bold md:text-2xl">
+          ByteBreach
+        </div>
       </div>
-      <Box color={"#04151F"} bg={"#F1F1F1"} borderRadius={22}>
+      <Box
+        color={"#04151F"}
+        bg={"#ffffff"}
+        borderRadius={"34px"}
+        borderTopRadius={77}
+        className="absolute left-36 top-28"
+      >
+        <div
+          className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat fixed  right-[0] top-[0px] rounded-bl-[180px]`}
+        ></div>
         <Tabs
           variant="soft-rounded"
           isFitted
@@ -342,23 +361,41 @@ export default function Login() {
         >
           <TabList display={"flex"} justifyContent={"center"}>
             <Tab
+              className={
+                tabIndex === 0 ? "uui-tab-white-left" : "uui-tab-black-left"
+              }
               paddingTop={6}
-              textDecoration={tabIndex === 0 ? "underline" : "none"}
-              textDecorationColor={"#4A3AFF"}
             >
-              Client
+              <div
+                className={
+                  tabIndex === 0
+                    ? "border-b-[2px] border-brandBlue pb-[5px]"
+                    : ""
+                }
+              >
+                Client
+              </div>
             </Tab>
             <Tab
+              className={
+                tabIndex === 1 ? "uui-tab-white-right" : "uui-tab-black-right"
+              }
               paddingTop={6}
-              textDecoration={tabIndex === 1 ? "underline" : "none"}
-              textDecorationColor={"#4A3AFF"}
             >
-              Auditor
+              <div
+                className={
+                  tabIndex === 1
+                    ? "border-b-[2px] border-brandBlue pb-[5px]"
+                    : ""
+                }
+              >
+                Auditor
+              </div>
             </Tab>
           </TabList>
 
-          <TabPanels>
-            <TabPanel height={"25rem"} width={"30rem"}>
+          <TabPanels className="bg-gray" borderBottomRadius={"34px"}>
+            <TabPanel height={"27rem"}>
               <Client
                 loginWithGithub={loginWithGithub}
                 loginWithGoogle={loginWithGoogle}
@@ -369,7 +406,7 @@ export default function Login() {
                 getAccounts={getAccounts}
               />
             </TabPanel>
-            <TabPanel height={"25rem"} width={"30rem"}>
+            <TabPanel height={"27rem"}>
               <Client
                 loginWithGithub={loginWithGithub}
                 loginWithGoogle={loginWithGoogle}

@@ -62,31 +62,33 @@ export default function Client({
         <div className="ml-2">Login using your Wallet</div>
       </button>
       <div className="mb-4">
-        <hr className="bg-black " />
+        <hr className="bg-lightGray" />
       </div>
+      <div className="ml-1 mb-3 font-bold">Email</div>
+
       <InputGroup>
-        <InputRightElement marginRight={4}>
+        <InputRightElement marginRight={4} className="mt-1">
           <img src="/assets/email.svg" alt="" />
         </InputRightElement>
+
         <Input
           _focus={{ border: "none" }}
           type="email"
-          placeholder="Enter your Email"
-          className="card flex-row border-none bg-white w-4/5 sm:w-full rounded-full  mb-4 flex-row items-center p-3 text focus:border-red"
+          placeholder="Email address"
+          className="card flex-row border-none bg-white w-4/5 sm:w-full rounded-full  mb-4 flex-row items-center p-3 pb-6 pt-6 text focus:border-red"
           onChange={(e) => {
             console.log(e.target.value);
             setClientEmail(e.target.value);
           }}
         />
       </InputGroup>
-
       <div className="flex-row justify-center ">
         <button
           onClick={(e) => {
             e.preventDefault();
             loginWithEmail();
           }}
-          className=" bg-brandBlue card flex-row justify-center w-2/5 rounded-full border-black border-2 mb-4 flex-row items-center p-3 m-auto border-none"
+          className=" bg-darkBlue card flex-row justify-center w-2/5 rounded-full border-black border-2 mb-4 flex-row items-center p-3 m-auto border-none"
         >
           <div className="ml-2 text-white">Submit</div>
         </button>
