@@ -69,22 +69,25 @@ export default function Client({
       </div>
 
       <div className="ml-14 mb-3 font-bold">Email</div>
-      <InputGroup className="relative">
-        <InputRightElement className="mt-2 absolute right-[65px]">
-          <img src="/assets/email.svg" alt="" />
-        </InputRightElement>
+      <div className="w-full sm:w-5/6 m-auto uui-input">
+        <Image
+          src={"/assets/email.svg"}
+          width={15}
+          height={15}
+          alt="logo"
+          className="uui-input-logo-email"
+        />
 
         <Input
-          _focus={{ border: "none" }}
           type="email"
           placeholder="Email address"
-          className="card flex-row border-none bg-white w-4/5 sm:w-4/5 m-auto rounded-full  mb-4 flex-row items-center p-3 pb-7 pt-7 text focus:border-red"
+          className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 pt-6 pb-6 focus:border-0"
           onChange={(e) => {
             console.log(e.target.value);
             setClientEmail(e.target.value);
           }}
         />
-      </InputGroup>
+      </div>
       <div className="flex-row justify-center ">
         <button
           onClick={(e) => {
