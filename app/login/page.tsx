@@ -403,7 +403,7 @@ export default function Login() {
                     : ""
                 }
               >
-                Auditor
+                Auditors
               </div>
             </Tab>
           </TabList>
