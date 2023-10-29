@@ -124,8 +124,8 @@ export default function Register() {
               placeholder="eg. bytebreach"
             />
           </div>
-          <div className="w-full sm:w-5/6 m-auto flex-row">
-            <div className="inline-block w-1/2 uui-input">
+          <div className="w-full sm:w-5/6 m-auto flex-row ">
+            <div className="inline-block w-[46%] uui-input mr-4 ">
               <label className="text-labelBlue">
                 Sherlock{" "}
                 <img className="uui-img-css" src="/assets/i.svg" alt="" />
@@ -147,7 +147,7 @@ export default function Register() {
                 value={github}
               />
             </div>
-            <div className="inline-block w-1/2">
+            <div className="inline-block w-[46%] ml-4">
               <label className="text-labelBlue">
                 CodeArena{" "}
                 <img className="uui-img-css" src="/assets/i.svg" alt="" />
