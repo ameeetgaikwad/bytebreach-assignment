@@ -72,8 +72,8 @@ export default function Client({
       <div className="w-full sm:w-5/6 m-auto uui-input">
         <Image
           src={"/assets/email.svg"}
-          width={15}
-          height={15}
+          width={18}
+          height={18}
           alt="logo"
           className="uui-input-logo-email"
         />
