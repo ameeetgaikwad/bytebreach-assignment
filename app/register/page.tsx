@@ -32,7 +32,7 @@ export default function Register() {
           </div>
         </div>
       </div>
-      <div className="shadow-lg absolute left-36 top-4 w-2/6 border-lightGray border-[1px] rounded-[34px]">
+      <div className="shadow-lg absolute left-36 top-6 w-2/6 border-lightGray border-[1px] rounded-[34px]">
         <form
           onSubmit={(e) => {
             e.preventDefault();
