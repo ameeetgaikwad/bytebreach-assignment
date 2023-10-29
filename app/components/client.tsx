@@ -68,7 +68,7 @@ export default function Client({
         <hr className="text-lightGray" />
       </div>
 
-      <div className="ml-16 mb-3 font-bold">Email</div>
+      <div className="ml-14 mb-3 font-bold">Email</div>
       <InputGroup className="relative">
         <InputRightElement className="mt-1 absolute right-[65px]">
           <img src="/assets/email.svg" alt="" />
