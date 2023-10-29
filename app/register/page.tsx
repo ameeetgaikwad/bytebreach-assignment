@@ -124,8 +124,8 @@ export default function Register() {
               placeholder="eg. bytebreach"
             />
           </div>
-          <div className="w-full sm:w-5/6 m-auto uui-input flex-row">
-            <div className="inline-block w-1/2">
+          <div className="w-full sm:w-5/6 m-auto flex-row">
+            <div className="inline-block w-1/2 uui-input">
               <label className="text-labelBlue">
                 Sherlock{" "}
                 <img className="uui-img-css" src="/assets/i.svg" alt="" />
