@@ -21,53 +21,56 @@ export default function Client({
 }) {
   const { setClientEmail } = useContext(GlobalContext);
   return (
-    <main className="flex-col justify-center items-center ml-14 sm:ml-0">
+    <main className="flex-col justify-center items-center ml-14 sm:ml-0 pt-4">
       <button
         onClick={loginWithGoogle}
-        className="boreder-none bg-white card flex-row w-4/5 sm:w-full p-2 rounded-full mb-4 flex-row items-center"
+        className="boreder-none bg-white card flex-row w-4/5 sm:w-4/5 m-auto p-2 rounded-full mb-4 flex-row items-center"
       >
         <Image
-          className="ml-2"
+          className="m-auto"
           src={"/assets/google.svg"}
           width={38}
           height={37}
           alt="github"
         />
-        <div className="ml-2 ">Login using your Google Account</div>
+        <div className="m-auto -ml-10">Login using your Google Account</div>
       </button>
       <button
         onClick={loginWithGithub}
-        className="border-none bg-white card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
+        className="border-none bg-white card flex-row bg-white w-4/5 sm:w-4/5 m-auto p-2 rounded-full border-black border-2 mb-4 flex-row items-center"
       >
         <Image
-          className="ml-2"
+          className="m-auto"
           src={"/assets/github.svg"}
           width={38}
           height={37}
           alt="github"
         />
-        <div className="ml-2">Login using your GitHub Account</div>
+        <div className="m-auto -ml-10">Login using your GitHub Account</div>
       </button>
       <button
         onClick={lognMetamask}
-        className="border-none card flex-row bg-white w-4/5 sm:w-full p-2 rounded-full  border-2 mb-4 flex-row items-center"
+        className="border-none card flex-row bg-white w-4/5 sm:w-4/5 m-auto p-2 rounded-full  border-2 mb-4 flex-row items-center"
       >
         <Image
-          className="ml-2"
+          className="m-auto"
           src={"/assets/wallet.svg"}
           width={38}
           height={37}
           alt="github"
         />
-        <div className="ml-2">Login using your Wallet</div>
+        <div className="m-auto -ml-10">
+          Login using your Wallet &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp;
+        </div>
       </button>
       <div className="mb-4">
-        <hr className="bg-lightGray" />
+        <hr className="text-lightGray" />
       </div>
-      <div className="ml-1 mb-3 font-bold">Email</div>
 
-      <InputGroup>
-        <InputRightElement marginRight={4} className="mt-1">
+      <div className="ml-16 mb-3 font-bold">Email</div>
+      <InputGroup className="relative">
+        <InputRightElement className="mt-1 absolute right-[65px]">
           <img src="/assets/email.svg" alt="" />
         </InputRightElement>
 
@@ -75,7 +78,7 @@ export default function Client({
           _focus={{ border: "none" }}
           type="email"
           placeholder="Email address"
-          className="card flex-row border-none bg-white w-4/5 sm:w-full rounded-full  mb-4 flex-row items-center p-3 pb-6 pt-6 text focus:border-red"
+          className="card flex-row border-none bg-white w-4/5 sm:w-4/5 m-auto rounded-full  mb-4 flex-row items-center p-3 pb-6 pt-6 text focus:border-red"
           onChange={(e) => {
             console.log(e.target.value);
             setClientEmail(e.target.value);

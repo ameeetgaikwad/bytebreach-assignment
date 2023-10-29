@@ -33,13 +33,13 @@ export default function Login() {
   const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(false);
+  // const [windowWidth, setWindowWidth] = useState(1600);
+  // let windowHeight;
 
-  let windowHeight;
-  let windowWidth;
   useEffect(() => {
-    windowHeight = window?.innerHeight;
-    windowWidth = window?.innerWidth;
-    console.log(windowHeight);
+    // windowHeight = window?.innerHeight;
+    // setWindowWidth(window?.innerWidth);
+
     const init = async () => {
       try {
         const chainConfig = {
@@ -327,19 +327,22 @@ export default function Login() {
   return (
     <main className="flex min-h-screen flex-col items-center p-12 md:p-18 md:w-full bg-white bg-bottom bg-no-repeat bg-cover">
       <div className="absolute top-2 left-4">{loading ? <Spinner /> : ""}</div>
-
-      <div
-        className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat fixed  right-[0] top-[0px] rounded-bl-[180px]`}
-      >
-        <Image
-          src={"/assets/logo.svg"}
-          width={120}
-          height={120}
-          alt="l"
-          className="mb-4"
-        />
-        <div className="pt-5 pb-5 text-white text-xl font-bold md:text-2xl">
-          ByteBreach
+      <div className="">
+        <div
+          className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat absolute  right-[0] top-[0px] rounded-bl-[180px] `}
+        >
+          <div className={`absolute right-[160px]  top-[250px] z-10`}>
+            <Image
+              src={"/assets/logo.svg"}
+              width={120}
+              height={120}
+              alt="l"
+              className="mb-4"
+            />
+            <div className="pt-5 pb-5 text-white text-xl font-bold md:text-2xl">
+              ByteBreach
+            </div>
+          </div>
         </div>
       </div>
       <Box
@@ -347,11 +350,8 @@ export default function Login() {
         bg={"#ffffff"}
         borderRadius={"34px"}
         borderTopRadius={77}
-        className="absolute left-36 top-28"
+        className="absolute left-36 top-28 shadow-lg"
       >
-        <div
-          className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat fixed  right-[0] top-[0px] rounded-bl-[180px]`}
-        ></div>
         <Tabs
           variant="soft-rounded"
           isFitted
@@ -369,7 +369,7 @@ export default function Login() {
               <div
                 className={
                   tabIndex === 0
-                    ? "border-b-[2px] border-brandBlue pb-[5px]"
+                    ? "border-b-[2px] border-darkBlue pb-[5px]"
                     : ""
                 }
               >
@@ -385,7 +385,7 @@ export default function Login() {
               <div
                 className={
                   tabIndex === 1
-                    ? "border-b-[2px] border-brandBlue pb-[5px]"
+                    ? "border-b-[2px] border-darkBlue pb-[5px]"
                     : ""
                 }
               >
