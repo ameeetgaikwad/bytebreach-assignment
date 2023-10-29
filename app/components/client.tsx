@@ -70,7 +70,7 @@ export default function Client({
 
       <div className="ml-14 mb-3 font-bold">Email</div>
       <InputGroup className="relative">
-        <InputRightElement className="mt-1 absolute right-[65px]">
+        <InputRightElement className="mt-2 absolute right-[65px]">
           <img src="/assets/email.svg" alt="" />
         </InputRightElement>
 
@@ -78,7 +78,7 @@ export default function Client({
           _focus={{ border: "none" }}
           type="email"
           placeholder="Email address"
-          className="card flex-row border-none bg-white w-4/5 sm:w-4/5 m-auto rounded-full  mb-4 flex-row items-center p-3 pb-6 pt-6 text focus:border-red"
+          className="card flex-row border-none bg-white w-4/5 sm:w-4/5 m-auto rounded-full  mb-4 flex-row items-center p-3 pb-7 pt-7 text focus:border-red"
           onChange={(e) => {
             console.log(e.target.value);
             setClientEmail(e.target.value);

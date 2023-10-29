@@ -14,6 +14,8 @@ const config: Config = {
       red: "#ff0000",
       darkBlue: "#1F3060",
       lightGray: "#D4D4D4",
+      lightBlue: "#6F6C90",
+      labelBlue: "#170F49",
     },
     extend: {
       backgroundImage: {
