@@ -327,11 +327,11 @@ export default function Login() {
   return (
     <main className="flex min-h-screen flex-col items-center p-12 md:p-18 md:w-full bg-white bg-bottom bg-no-repeat bg-cover">
       <div className="absolute top-2 left-4">{loading ? <Spinner /> : ""}</div>
-      <div className="">
-        <div
-          className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat absolute  right-[0] top-[0px] rounded-bl-[180px] `}
-        >
-          <div className={`absolute right-[160px]  top-[250px] z-10`}>
+      <div
+        className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat absolute right-[0] top-[0px] rounded-bl-[180px]`}
+      >
+        <div className="uui-img">
+          <div className="uui-img-center ">
             <Image
               src={"/assets/logo.svg"}
               width={120}
@@ -345,6 +345,20 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      {/* <div className={`uui-img-center`}>
+        <Image
+          src={"/assets/logo.svg"}
+          width={120}
+          height={120}
+          alt="l"
+          className="mb-4"
+        />
+        <div className="pt-5 pb-5 text-white text-xl font-bold md:text-2xl">
+          ByteBreach
+        </div>
+      </div> */}
+
       <Box
         color={"#04151F"}
         bg={"#ffffff"}
