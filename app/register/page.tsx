@@ -43,7 +43,9 @@ export default function Register() {
         >
           <div className="m-5">
             <p className="font-bold">Contact Details</p>
-            <p className="text-lightBlue">Enter your details to login</p>
+            <p className="text-lightBlue text-sm">
+              Enter your details to login
+            </p>
           </div>
           <div className="mb-4 w-5/6 m-auto">
             <hr className="text-lightGray" />
