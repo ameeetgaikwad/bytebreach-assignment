@@ -132,3 +132,24 @@ body {
     -50%
   ); /* Center the image by translating it back by half of its own width and height */
 }
+
+.placeholder {
+  font-size: small;
+}
+
+.uui-input {
+  position: relative;
+}
+.uui-input-logo {
+  z-index: 10;
+  position: absolute;
+  bottom: 1.7rem;
+  right: 1rem;
+}
+
+.uui-img-css {
+  display: inline;
+  width: 15px;
+  height: 15px;
+  margin-bottom: 0.3rem;
+}

@@ -48,30 +48,46 @@ export default function Register() {
           <div className="mb-4 w-5/6 m-auto">
             <hr className="text-lightGray" />
           </div>
-          <div className=" w-full sm:w-5/6 m-auto">
+          <div className=" w-full sm:w-5/6 m-auto uui-input">
             <label className="text-labelBlue">
               Full Name <span className="text-red">*</span>
             </label>
+            <Image
+              src={"/assets/contact.svg"}
+              width={15}
+              height={15}
+              alt="logo"
+              className="uui-input-logo"
+            />
             <Input
               type="text"
-              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-none"
+              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-none placeholder "
               required
+              placeholder="John Carter"
               onChange={(e) => setName(e.target.value)}
               value={name}
             />
           </div>
-          <div className="w-full sm:w-5/6 m-auto">
+          <div className="w-full sm:w-5/6 m-auto uui-input">
             <label className="text-labelBlue">
               Github <span className="text-red">*</span>
-            </label>
+            </label>{" "}
+            <Image
+              src={"/assets/githubForm.svg"}
+              width={15}
+              height={15}
+              alt="logo"
+              className="uui-input-logo"
+            />
             <Input
               type="text"
-              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0"
+              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0 placeholder"
               required
               onChange={(e) => {
                 setCompany(e.target.value);
               }}
               value={company}
+              placeholder="eg. bytebreach"
             />
           </div>
           <div className="w-full sm:w-5/6 m-auto">
@@ -80,45 +96,69 @@ export default function Register() {
             </label>
             <Input
               type="text"
-              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0"
+              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0 placeholder"
               onChange={(e) => {
                 setWebsite(e.target.value);
               }}
               required
               value={website}
+              placeholder="eg. 500$"
             />
           </div>
-          <div className="w-full sm:w-5/6 m-auto">
-            <label className="text-labelBlue">Twitter</label>
+          <div className="w-full sm:w-5/6 m-auto uui-input">
+            <label className="text-labelBlue">Twitter</label>{" "}
+            <Image
+              src={"/assets/twitter.svg"}
+              width={15}
+              height={15}
+              alt="logo"
+              className="uui-input-logo"
+            />
             <Input
               type="text"
-              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0"
+              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0 placeholder"
               onChange={(e) => {
                 setTwitter(e.target.value);
               }}
               value={twitter}
+              placeholder="eg. bytebreach"
             />
           </div>
-          <div className="w-1/2 sm:w-5/6 m-auto">
-            <div>
-              <label className="text-labelBlue">Sherlock</label>
+          <div className="w-full sm:w-5/6 m-auto uui-input flex-row">
+            <div className="inline-block w-1/2">
+              <label className="text-labelBlue">
+                Sherlock{" "}
+                <img className="uui-img-css" src="/assets/i.svg" alt="" />
+              </label>{" "}
+              <Image
+                src={"/assets/sherlock.svg"}
+                width={18}
+                height={18}
+                alt="logo"
+                className="uui-input-logo"
+              />
               <Input
                 type="text"
-                className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0"
+                className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0 placeholder"
                 onChange={(e) => {
                   setGithub(e.target.value);
                 }}
+                placeholder="eg. bytebreach"
                 value={github}
               />
             </div>
-            <div>
-              <label className="text-labelBlue">CodeArena</label>
+            <div className="inline-block w-1/2">
+              <label className="text-labelBlue">
+                CodeArena{" "}
+                <img className="uui-img-css" src="/assets/i.svg" alt="" />
+              </label>
               <Input
                 type="text"
-                className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0"
+                className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0 placeholder"
                 onChange={(e) => {
                   setGithub(e.target.value);
                 }}
+                placeholder="eg. bytebreach"
                 value={github}
               />
             </div>
@@ -132,18 +172,19 @@ export default function Register() {
             </label>
             <Input
               type="text"
-              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0"
+              className="flex-row bg-white w-full p-2 rounded-full border-lightGray shadow-md text-lightBlue border-2 mb-4 flex-row items-center p-2 focus:border-0 placeholder"
               onChange={(e) => {
                 setTwitter(e.target.value);
               }}
               value={twitter}
+              placeholder="1234"
               required
             />
           </div>
           <div className="text-center">
             <Input
               type="submit"
-              className="flex-row bg-darkBlue w-3/6 p-2 rounded-full border-lightGray shadow-md text-white border-2 mb-4 flex-row items-center p-2 focus:border-none"
+              className="flex-row bg-darkBlue w-3/6 p-2 rounded-full border-lightGray shadow-md text-white border-2 mb-4 flex-row items-center p-2 focus:border-none placeholder"
               onClick={() => {
                 onsubmit;
               }}
