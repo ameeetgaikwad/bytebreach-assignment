@@ -331,7 +331,7 @@ export default function Login() {
         className={`bg-[url('/assets/bg.png')] w-1/3 h-screen bg-no-repeat absolute right-[0] top-[0px] rounded-bl-[180px]`}
       >
         <div className="uui-img">
-          <div className="uui-img-center ">
+          <div className="uui-img-center inset-x-auto ">
             <Image
               src={"/assets/logo.svg"}
               width={120}
@@ -382,7 +382,7 @@ export default function Login() {
             >
               <div
                 className={
-                  tabIndex === 0
+                  tabIndex === 1
                     ? "border-b-[2px] border-darkBlue pb-[5px]"
                     : ""
                 }
@@ -398,7 +398,7 @@ export default function Login() {
             >
               <div
                 className={
-                  tabIndex === 1
+                  tabIndex === 0
                     ? "border-b-[2px] border-darkBlue pb-[5px]"
                     : ""
                 }
