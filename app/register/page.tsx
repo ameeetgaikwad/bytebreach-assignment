@@ -41,7 +41,7 @@ export default function Register() {
           }}
           className=""
         >
-          <div className="m-5">
+          <div className="m-5 mb-2 ml-10">
             <p className="font-bold">Contact Details</p>
             <p className="text-lightBlue text-sm">
               Enter your details to login
